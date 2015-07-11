@@ -1,12 +1,22 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <!-- Commentaire -->
         <meta charset="utf-8" />
         <title>Introduction à JavaScript</title>
+    <script>
+            var i = 0;
+            function myFunction() {
+            	i = i + 1;
+            	document.getElementById("demo").innerHTML = i;
+            }
+    </script>
     </head>
 
     <body>
         <h1>Introduction à JavaScript</h1>
+        <p id="demo">Texte de départ</p>
+        <p><button onclick="myFunction()">Create a Dialog Box!</button></p>
     </body>
 </html>
