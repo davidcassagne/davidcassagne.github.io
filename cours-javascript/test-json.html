@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your first HTML5 Document</title>
+    <script>
+        var text = '{"employees":[' +
+            '{"firstName":"John","lastName":"Doe" },' +
+            '{"firstName":"Anna","lastName":"Smith" },' +
+            '{"firstName":"Peter","lastName":"Jones" }]}';
+
+        obj = JSON.parse(text);
+        document.getElementById("truc").innerHTML =
+        obj.employees[1].firstName + " " + obj.employees[1].lastName;
+        var x = "";
+        for (var i =0; i < 3; i++) {
+            x += obj.employees[i].firstName + " " + obj.employees[i].lastName;
+        }
+        document.getElementById("toto").innerHTML = x;
+    </script>
+</head>
+
+<body>
+    <h1>Mon programme</h1>
+    <p>Okay, now we’re going somewhere!</p>
+    <p id="truc"></p>
+    <p id="toto"></p>
+</body>
