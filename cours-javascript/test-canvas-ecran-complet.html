@@ -90,7 +90,7 @@
 
   
     function startup() {
-      var el = document.getElementById("mon_canvas");
+      var el = document.getElementById("canvas");
       
       /* Resize the canvas to occupy the full page, 
       by getting the widow width and height and setting it to canvas*/
@@ -104,7 +104,7 @@
       el.addEventListener("touchleave", handleEnd, false);
       el.addEventListener("touchmove", handleMove, false);
 
-      var context = el.getContext("2d");
+      /*var context = el.getContext("2d");
       
       context.beginPath(); // On démarre un nouveau tracé
       context.moveTo(0, 300); // On se déplace au coin inférieur gauche
@@ -112,14 +112,14 @@
       context.lineTo(300, 300);
       context.lineTo(0, 300);
       context.stroke(); // On trace seulement les lignes.
-      context.closePath();
+      context.closePath();*/
 
     }
   </script>
 </head>
 
 <body onload="startup()">
-<canvas id="mon_canvas">
+<canvas id="canvas">
     Message pour les navigateurs ne supportant pas encore canvas.
 </canvas>
 </body>
