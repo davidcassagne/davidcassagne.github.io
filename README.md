@@ -6,3 +6,5 @@ https://davidcassagne.github.io
 https://davidcassagne.github.io/cours-javascript/
 
 http://startbootstrap.com/template-overviews/heroic-features/
+
+http://www.w3schools.com/bootstrap/bootstrap_theme_me.asp
