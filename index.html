@@ -1,113 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Page de test</title>
 
-<!doctype html>
-<html>
-<head>
-  <title>Touch Event Example</title>
-  <style type="text/css">
-    #canvas {
-      border:solid black 1px;
-    }
-  </style>
-  
-  <script>
-    var ongoingTouches = new Array;
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     
-    function colorForTouch(touch) {
-      var id = touch.identifier;
-      id = id.toString(16); // make it a hex digit
-      return "#" + id + id + id;
-    }
-    
-    function ongoingTouchIndexById(idToFind) {
-      for (var i=0; i<ongoingTouches.length; i++) {
-        var id = ongoingTouches[i].identifier;
-        
-        if (id == idToFind) {
-          return i;
-        }
-      }
-      return -1;    // not found
-    }
-    
-    function handleStart(evt) {
-      evt.preventDefault();
-      var el = document.getElementById("canvas");
-      var ctx = el.getContext("2d");
-      var touches = evt.changedTouches;
-            
-      for (var i=0; i<touches.length; i++) {
-        ongoingTouches.push(touches[i]);
-        var color = colorForTouch(touches[i]);
-        ctx.fillStyle = color;
-        ctx.fillRect(touches[i].pageX-2, touches[i].pageY-2, 4, 4);
-      }
-    }
-  
-    function handleMove(evt) {
-      evt.preventDefault();
-      var el = document.getElementById("canvas");
-      var ctx = el.getContext("2d");
-      var touches = evt.changedTouches;
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Page de test</h1>
+      <p><a href="https://jsfiddle.net/">jsFiddle</a></p>
+      <p>Ceci est un premier programme qui permet d'afficher Bonjour <a href="http://jsfiddle.net/davidcassagne/wmovbxtt/">Voir ici</a></p>
+      <p><a href="https://openclassrooms.com/courses/la-balise-canvas-avec-javascript">La balise canvas avec JavaScript</a></p>
+      <p><a href="test-canvas.html">Test premier canvas</a></p>
+      <p><a href="https://jsfiddle.net/davidcassagne/0qo6fvor/1/">Canvas avec jsFiddle</a></p>
+      <p><a href="test-canvas-jsfiddle.html">version html du test jsFiddle</a></p>
+      <p><a href="test-bootstrap.html">Test Bootstrap</a></p>
+      <p><a href="bouton.html">Premier bouton</a></p>
+      <p><a href="test-json.html">Test JSON</a></p>
+      <p><a href="http://stackoverflow.com/questions/23973932/responsive-canvas-in-bootstrap-column">http://stackoverflow.com/questions/23973932/responsive-canvas-in-bootstrap-column</a></p>
+      <p><a href="https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Events/Touch_events">https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Events/Touch_events</a></p>
+      <p>http://mtdevans.com/2013/05/fourth-order-runge-kutta-algorithm-in-javascript-with-demo/</p>
+      <p><a href="http://www.pshkvsky.com/gif2code/sine-animation-tutorial-three-js/">http://www.pshkvsky.com/gif2code/sine-animation-tutorial-three-js/</a></p>
+      Full page canvas https://jsfiddle.net/jaredwilli/qFuDr/
+      http://interactjs.io/
+      http://www.w3.org/TR/html5/syntax.html
+    </div><!-- /.container -->
       
-      ctx.lineWidth = 4;
-            
-      for (var i=0; i<touches.length; i++) {
-        var color = colorForTouch(touches[i]);
-        var idx = ongoingTouchIndexById(touches[i].identifier);
-
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-        ctx.lineTo(touches[i].pageX, touches[i].pageY);
-        ctx.closePath();
-        ctx.stroke();
-        ongoingTouches.splice(idx, 1, touches[i]);  // swap in the new touch record
-      }
-    }
-
-    function handleEnd(evt) {
-      evt.preventDefault();
-      var el = document.getElementById("canvas");
-      var ctx = el.getContext("2d");
-      var touches = evt.changedTouches;
-      
-      ctx.lineWidth = 4;
-            
-      for (var i=0; i<touches.length; i++) {
-        var color = colorForTouch(touches[i]);
-        var idx = ongoingTouchIndexById(touches[i].identifier);
-        
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(ongoingTouches[i].pageX, ongoingTouches[i].pageY);
-        ctx.lineTo(touches[i].pageX, touches[i].pageY);
-        ongoingTouches.splice(i, 1);  // remove it; we're done
-      }
-    }
-    
-    function handleCancel(evt) {
-      evt.preventDefault();
-      var touches = evt.changedTouches;
-      
-      for (var i=0; i<touches.length; i++) {
-        ongoingTouches.splice(i, 1);  // remove it; we're done
-      }
-    }
-
-  
-    function startup() {
-      var el = document.getElementById("canvas");
-      el.addEventListener("touchstart", handleStart, false);
-      el.addEventListener("touchend", handleEnd, false);
-      el.addEventListener("touchcancel", handleCancel, false);
-      el.addEventListener("touchleave", handleEnd, false);
-      el.addEventListener("touchmove", handleMove, false);
-    }
-  </script>
-</head>
-<body onload="startup()">
-  <canvas id="canvas" width="600" height="600">
-    You really badly need to use a different browser.
-  </canvas>
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
 </html>
