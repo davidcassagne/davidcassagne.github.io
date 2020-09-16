@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucles &#8212; Cours Python</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Principaux types de données" href="types.html" />
+    <link rel="prev" title="Tests (Instructions conditionnelles)" href="tests.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+<!-- Ajout DC pour Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35563429-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.courspython.com/">
+          CoursPython</a>
+<!--        <span class="navbar-text navbar-version pull-left"><b>2</b></span>
+ -->
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="sommaire.html">Sommaire</a></li>
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="sommaire.html">Plan <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#creation-d-une-courbe">Création d’une courbe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#formats-de-courbes">Formats de courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#trace-de-formes">Tracé de formes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-pi-Monte-Carlo.html">Calcul de <span class="math notranslate nohighlight">\(\pi\)</span> avec la méthode Monte-Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-quantique.html">TP Quantique - Valeurs propres et vecteurs propres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="tests.html" title="Previous Chapter: Tests (Instructions conditionnelles)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tests (Instru...</span>
+    </a>
+  </li>
+  <li>
+    <a href="types.html" title="Next Chapter: Principaux types de données"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Principaux ty... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            <form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Rechercher" />
+ </div>
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boucles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boucles-bornees-et-non-bornees">Boucles bornées et non bornées</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boucle-for">Boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boucle-while">Boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comment-choisir-entre-boucle-for-et-boucle-while">Comment choisir entre boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> et boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transformation-d-une-boucle-for-en-un-boucle-while">Transformation d’une boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> en un boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#les-instructions-break-et-continue-et-la-clause-else-dans-les-boucles">Les instructions <code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code>, et la clause <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> dans les boucles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#l-instruction-break">L’instruction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remarque-equivalent-du-do-while-faire-tant-que">Remarque : équivalent du <strong>do…while</strong> (<strong>faire…tant que</strong>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l-instruction-continue">L’instruction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#la-clause-else-dans-une-boucle">La clause <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> dans une boucle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+	</div>
+  </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="boucles">
+<h1>Boucles<a class="headerlink" href="#boucles" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Les boucles s’utilisent pour répéter plusieurs fois l’éxecution d’une partie du programme.</p>
+<div class="section" id="boucles-bornees-et-non-bornees">
+<h2>Boucles bornées et non bornées<a class="headerlink" href="#boucles-bornees-et-non-bornees" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="simple">
+<dt>Boucle bornée</dt><dd><p>Quand on sait combien de fois doit avoir lieu la répétition, on utilise généralement une boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a>.</p>
+</dd>
+<dt>Boucle non bornée</dt><dd><p>Si on ne connait pas à l’avance le nombre de répétitions, on choisit une boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="boucle-for">
+<span id="in"></span><span id="for"></span><span id="index-0"></span><h2>Boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a><a class="headerlink" href="#boucle-for" title="Lien permanent vers ce titre">¶</a></h2>
+<p><strong>Exemple d’utilisation :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i a pour valeur&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=for%20i%20in%20%5B0,%201,%202,%203%5D%3A%0A%20%20%20%20print%28%22i%20a%20pour%20valeur%22,%20i%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">2</span>
+<span class="n">i</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>L’instruction <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> est une instruction composée, c’est-à-dire une instruction dont l’en-tête se termine par deux-points <code class="docutils literal notranslate"><span class="pre">:</span></code>, suivie d’un bloc indenté qui constitue le <strong>corps de la boucle</strong>.</p>
+<p>On dit que l’on réalise une <strong>itération</strong> de la boucle à chaque fois que le corps de la boucle est exécuté.</p>
+<p>Dans l’en-tête de la boucle, on précise après le mot-clé <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> le nom d’une variable (<code class="docutils literal notranslate"><span class="pre">i</span></code> dans l’exemple ci-dessus) qui prendra successivement toutes les valeurs qui sont données après le mot-clé <a class="reference internal" href="#in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">in</span></code></a>. On dit souvent que cette variable (ici <code class="docutils literal notranslate"><span class="pre">i</span></code>) est un <strong>compteur</strong> car elle sert à numéroter les itérations de la boucle.</p>
+<p>Il est possible d’obtenir le même résultat sans donner la liste des valeurs, mais en utilisant la fontion <a class="reference internal" href="introduction-python.html#range"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">range()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i a pour valeur&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=for+i+in+range(4)%3A%0A++++print(%22i+a+pour+valeur%22,+i)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Pour parcourir les indices d’une liste, il est possible de combiner <a class="reference internal" href="introduction-python.html#range"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">range()</span></code></a> et <a class="reference internal" href="introduction-python.html#len"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">len()</span></code></a> comme ci-dessous :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Marc&quot;</span><span class="p">,</span> <span class="s2">&quot;est&quot;</span><span class="p">,</span> <span class="s2">&quot;dans&quot;</span><span class="p">,</span> <span class="s2">&quot;le&quot;</span><span class="p">,</span> <span class="s2">&quot;jardin&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i vaut&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;et c[i] vaut&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=c+%3D+%5B%22Marc%22,+%22est%22,+%22dans%22,+%22le%22,+%22jardin%22%5D%0Afor+i+in+range(len(c))%3A%0A++++print(%22i+vaut%22,+i,+%22et+c%5Bi%5D+vaut%22,+c%5Bi%5D)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="n">vaut</span> <span class="mi">0</span> <span class="n">et</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">vaut</span> <span class="n">Marc</span>
+<span class="n">i</span> <span class="n">vaut</span> <span class="mi">1</span> <span class="n">et</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">vaut</span> <span class="n">est</span>
+<span class="n">i</span> <span class="n">vaut</span> <span class="mi">2</span> <span class="n">et</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">vaut</span> <span class="n">dans</span>
+<span class="n">i</span> <span class="n">vaut</span> <span class="mi">3</span> <span class="n">et</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">vaut</span> <span class="n">le</span>
+<span class="n">i</span> <span class="n">vaut</span> <span class="mi">4</span> <span class="n">et</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">vaut</span> <span class="n">jardin</span>
+</pre></div>
+</div>
+<p><strong>Rappel :</strong> La fonction <a class="reference internal" href="introduction-python.html#len"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">len()</span></code></a> renvoie le nombre d’éléments :</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Marc&quot;</span><span class="p">,</span> <span class="s2">&quot;est&quot;</span><span class="p">,</span> <span class="s2">&quot;dans&quot;</span><span class="p">,</span> <span class="s2">&quot;le&quot;</span><span class="p">,</span> <span class="s2">&quot;jardin&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>Dans l’exemple suivant, nous allons illustrer que la variable indiquée après <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> parcourt toutes les valeurs de la liste donnée après <a class="reference internal" href="#in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">in</span></code></a> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Marc&quot;</span><span class="p">,</span> <span class="s2">&quot;est&quot;</span><span class="p">,</span> <span class="s2">&quot;dans&quot;</span><span class="p">,</span> <span class="s2">&quot;le&quot;</span><span class="p">,</span> <span class="s2">&quot;jardin&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i vaut&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="go">i vaut Marc</span>
+<span class="go">i vaut est</span>
+<span class="go">i vaut dans</span>
+<span class="go">i vaut le</span>
+<span class="go">i vaut jardin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boucle-while">
+<span id="while"></span><span id="index-1"></span><h2>Boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a><a class="headerlink" href="#boucle-while" title="Lien permanent vers ce titre">¶</a></h2>
+<p><strong>Syntaxe :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">Instruction</span> <span class="n">A</span>
+</pre></div>
+</div>
+<img alt="_images/schema_while.png" src="_images/schema_while.png" />
+<p><strong>Exemple de programme :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x a pour valeur&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=x+%3D+1%0Awhile+x+%3C+10%3A%0A++++print(%22x+a+pour+valeur%22,+x)%0A++++x+%3D+x+*+2%0Aprint(%22Fin%22)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">4</span>
+<span class="n">x</span> <span class="n">a</span> <span class="n">pour</span> <span class="n">valeur</span> <span class="mi">8</span>
+<span class="n">Fin</span>
+</pre></div>
+</div>
+<p>Le mot-clé <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> signifie <strong>tant que</strong> en anglais. Le corps de la boucle (c’est-à-dire le bloc d’instructions indentées) sera répété tant que la <code class="docutils literal notranslate"><span class="pre">condition</span></code> est vraie.</p>
+<p>Dans l’exemple ci-dessus, <code class="docutils literal notranslate"><span class="pre">x</span></code> sera multiplié par 2 tant que sa valeur reste inférieure à 10.</p>
+<p><strong>Remarque :</strong> Si la condition est fausse au départ, le corps de la boucle n’est jamais exécuté. Si la condition reste toujours vraie, alors le corps de la boucle est répété indéfiniment.</p>
+</div>
+<div class="section" id="comment-choisir-entre-boucle-for-et-boucle-while">
+<h2>Comment choisir entre boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> et boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a><a class="headerlink" href="#comment-choisir-entre-boucle-for-et-boucle-while" title="Lien permanent vers ce titre">¶</a></h2>
+<p>En général, si on connaît avant de démarrer la boucle le nombre d’itérations à exécuter, on choisit une boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a>. Au contraire, si la décision d’arrêter la boucle ne peut se faire que par un test, on choisit une boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Il est toujours possible de remplacer une boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> par une boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a>.</p>
+</div>
+<div class="section" id="transformation-d-une-boucle-for-en-un-boucle-while">
+<h3>Transformation d’une boucle <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> en un boucle <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a><a class="headerlink" href="#transformation-d-une-boucle-for-en-un-boucle-while" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i a pour valeur&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Le programme ci-dessus est équivalent à:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i a pour valeur&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="https://python.developpez.com/cours/apprendre-python3/?page=page_6#L6-B">https://python.developpez.com/cours/apprendre-python3/?page=page_6#L6-B</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="les-instructions-break-et-continue-et-la-clause-else-dans-les-boucles">
+<h2>Les instructions <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a> et <a class="reference internal" href="#continue"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code></a>, et la clause <a class="reference internal" href="tests.html#else"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a> dans les boucles<a class="headerlink" href="#les-instructions-break-et-continue-et-la-clause-else-dans-les-boucles" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="l-instruction-break">
+<span id="break"></span><span id="index-2"></span><h3>L’instruction <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a><a class="headerlink" href="#l-instruction-break" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’instruction <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a> permet de « casser » l’exécution d’une boucle (<a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> ou <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a>). Elle fait sortir de la boucle et passer à l’instruction suivante.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;debut iteration&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fin iteration&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;apres la boucle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=for%20i%20in%20range(10%29%3A%0A%20%20%20%20print(%22debut%20iteration%22,%20i%29%0A%20%20%20%20print(%22bonjour%22%29%0A%20%20%20%20if%20i%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20break%0A%20%20%20%20print(%22fin%20iteration%22,%20i%29%0Aprint(%22apres%20la%20boucle%22%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">debut</span> <span class="n">iteration</span> <span class="mi">0</span>
+<span class="n">bonjour</span>
+<span class="n">fin</span> <span class="n">iteration</span> <span class="mi">0</span>
+<span class="n">debut</span> <span class="n">iteration</span> <span class="mi">1</span>
+<span class="n">bonjour</span>
+<span class="n">fin</span> <span class="n">iteration</span> <span class="mi">1</span>
+<span class="n">debut</span> <span class="n">iteration</span> <span class="mi">2</span>
+<span class="n">bonjour</span>
+<span class="n">apres</span> <span class="n">la</span> <span class="n">boucle</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans le cas de boucles imbriquées, l’instruction <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a> ne fait sortir que de la boucle la plus interne.</p>
+</div>
+</div>
+<div class="section" id="remarque-equivalent-du-do-while-faire-tant-que">
+<h3>Remarque : équivalent du <strong>do…while</strong> (<strong>faire…tant que</strong>)<a class="headerlink" href="#remarque-equivalent-du-do-while-faire-tant-que" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Dans de nombreux langages, il existe une instruction <strong>do…while</strong> qui permet de créer une boucle pour laquelle on ne connaît pas à l’avance le nombre de répétition, mais qui doit s’exécuter au moins une fois. Cette instruction n’existe pas en Python, mais on peut facilement reproduire son fonctionnement de la façon suivante :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;donnez un entier &gt; 0 : &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vous avez fourni&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reponse correcte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=while%20True%3A%0A%20%20%20%20n%20%3D%20int(input(%22donnez%20un%20entier%20%3E%200%20%3A%20%22%29%29%0A%20%20%20%20print(%22vous%20avez%20fourni%22,%20n%29%0A%20%20%20%20if%20n%20%3E%200%3A%0A%20%20%20%20%20%20%20%20break%0Aprint(%22reponse%20correcte%22%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target=_blank>Exécuter</a></p></div>
+<div class="section" id="l-instruction-continue">
+<span id="continue"></span><span id="index-3"></span><h3>L’instruction <a class="reference internal" href="#continue"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code></a><a class="headerlink" href="#l-instruction-continue" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’instruction <a class="reference internal" href="#continue"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code></a> permet de passer prématurément au tour de boucle suivant. Elle fait continuer sur la prochaine itération de la boucle.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;debut iteration&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fin iteration&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;apres la boucle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=for%20i%20in%20range(4%29%3A%0A%20%20%20%20print(%22debut%20iteration%22,%20i%29%0A%20%20%20%20print(%22bonjour%22%29%0A%20%20%20%20if%20i%20%3C%202%3A%0A%20%20%20%20%20%20%20%20continue%0A%20%20%20%20print(%22fin%20iteration%22,%20i%29%0Aprint(%22apres%20la%20boucle%22%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">debut</span> <span class="n">iteration</span> <span class="mi">0</span>
+<span class="n">bonjour</span>
+<span class="n">debut</span> <span class="n">iteration</span> <span class="mi">1</span>
+<span class="n">bonjour</span>
+<span class="n">debut</span> <span class="n">iteration</span> <span class="mi">2</span>
+<span class="n">bonjour</span>
+<span class="n">fin</span> <span class="n">iteration</span> <span class="mi">2</span>
+<span class="n">debut</span> <span class="n">iteration</span> <span class="mi">3</span>
+<span class="n">bonjour</span>
+<span class="n">fin</span> <span class="n">iteration</span> <span class="mi">3</span>
+<span class="n">apres</span> <span class="n">la</span> <span class="n">boucle</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="la-clause-else-dans-une-boucle">
+<h3>La clause <a class="reference internal" href="tests.html#else"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a> dans une boucle<a class="headerlink" href="#la-clause-else-dans-une-boucle" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La clause <a class="reference internal" href="tests.html#else"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a> dans un boucle permet de définir un bloc d’instructions qui sera exécuté à la fin seulement si la boucle s’est déroulée complétement sans être interrompue par un <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a>.</p>
+<p>Contrairement aux instructions présentes après la boucle, qui s’exécutent dans tous les cas (avec ou sans interruption par un <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a>), le bloc d’instructions défini dans la clause <a class="reference internal" href="tests.html#else"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a> ne s’exécutera pas lors de l’interruption par un <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a>. Après l’interruption, on passera directement aux instructions après la boucle.</p>
+<p>Autrement dit, le bloc de la clause <a class="reference internal" href="tests.html#else"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a> est exécuté lorsque la boucle se termine par épuisement de la liste (avec <a class="reference internal" href="#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a>) ou quand la condition devient fausse (avec <a class="reference internal" href="#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a>), mais pas quand la boucle est interrompue par un <a class="reference internal" href="#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a>. Ceci est illustré dans la boucle suivante, qui recherche des nombres premiers :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;egale&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;est un nombre premier&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=for%20n%20in%20range(2,%208%29%3A%0A%20%20%20%20for%20x%20in%20range(2,%20n%29%3A%0A%20%20%20%20%20%20%20%20if%20n%20%25%20x%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(n,%20%22egale%22,%20x,%20%22*%22,%20n/x%29%0A%20%20%20%20%20%20%20%20%20%20%20%20break%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print(n,%20%22est%20un%20nombre%20premier%22%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="n">est</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">premier</span>
+<span class="mi">3</span> <span class="n">est</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">premier</span>
+<span class="mi">4</span> <span class="n">egale</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">2.0</span>
+<span class="mi">5</span> <span class="n">est</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">premier</span>
+<span class="mi">6</span> <span class="n">egale</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">3.0</span>
+<span class="mi">7</span> <span class="n">est</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">premier</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Retour haut de page</a>
+      
+    </p>
+
+   <p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="CoursPython" data-lang="fr">Tweeter</a>
+<a href="https://twitter.com/CoursPython" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @CoursPython</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </p>
+    <p>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/80x15.png" align="absmiddle"/></a> 2020, David Cassagne.
+Création le 15 Oct 2012.
+        Mis à jour le 07 sept. 2020.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

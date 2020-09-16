@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sommaire &#8212; Cours Python</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Bases de Python" href="bases-python.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+<!-- Ajout DC pour Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35563429-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.courspython.com/">
+          CoursPython</a>
+<!--        <span class="navbar-text navbar-version pull-left"><b>2</b></span>
+ -->
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="#">Sommaire</a></li>
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Plan <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#creation-d-une-courbe">Création d’une courbe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#formats-de-courbes">Formats de courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#trace-de-formes">Tracé de formes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-pi-Monte-Carlo.html">Calcul de <span class="math notranslate nohighlight">\(\pi\)</span> avec la méthode Monte-Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-quantique.html">TP Quantique - Valeurs propres et vecteurs propres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="bases-python.html" title="Next Chapter: Bases de Python"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Bases de Python &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            <form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Rechercher" />
+ </div>
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+	</div>
+  </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="sommaire">
+<h1>Sommaire<a class="headerlink" href="#sommaire" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-python.html#presentation-des-outils-de-programmation">Présentation des outils de programmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-python.html#execution-d-un-premier-programme">Exécution d’un premier programme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-python.html#quelques-bases-rapides-en-python">Quelques bases rapides en Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tests.html#bloc-d-instructions-indentation">Bloc d’instructions - Indentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.html#instruction-if">Instruction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.html#instruction-if-else">Instruction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> … <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="boucles.html#boucles-bornees-et-non-bornees">Boucles bornées et non bornées</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boucles.html#boucle-for">Boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="boucles.html#boucle-while">Boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="boucles.html#comment-choisir-entre-boucle-for-et-boucle-while">Comment choisir entre boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> et boucle <code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="boucles.html#les-instructions-break-et-continue-et-la-clause-else-dans-les-boucles">Les instructions <code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code>, et la clause <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> dans les boucles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="types.html#la-fonction-type">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-int-entier">Le type <code class="xref std std-keyword docutils literal notranslate"><span class="pre">int</span></code> (entier)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-float-flottant">Le type <code class="xref std std-keyword docutils literal notranslate"><span class="pre">float</span></code> (flottant)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-str-chaine-de-caracteres">Le type <code class="xref std std-keyword docutils literal notranslate"><span class="pre">str</span></code> (chaîne de caractères)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-bool-booleen">Le type <code class="xref std std-keyword docutils literal notranslate"><span class="pre">bool</span></code> (booléen)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-list-liste">Le type <code class="xref std std-keyword docutils literal notranslate"><span class="pre">list</span></code> (liste)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#le-type-complex-complexe">Le type <code class="docutils literal notranslate"><span class="pre">complex</span></code> (complexe)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dictionnaire.html#Comment-construire-une-entrée-dans-un-dictionnaire-?">Comment construire une entrée dans un dictionnaire ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dictionnaire.html#Comment-créer-un-dictionnaire-?">Comment créer un dictionnaire ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dictionnaire.html#Comment-parcourir-un-dictionnaire-?">Comment parcourir un dictionnaire ?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#definition-d-une-fonction-def">Définition d’une fonction - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#variables-locales-variables-globales">Variables locales, variables globales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#vraies-fonctions-et-procedures">« Vraies » fonctions et procédures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#valeurs-par-defaut-pour-les-parametres">Valeurs par défaut pour les paramètres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#arguments-avec-etiquettes">Arguments avec étiquettes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions.html#utilisation-des-fonctions-dans-un-script">Utilisation des fonctions dans un script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#package">Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#complement">Complément</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apprendre-numpy.html#variable-pi">Variable pi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apprendre-numpy.html#creation">Création</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apprendre-numpy.html#affichage">Affichage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apprendre-numpy.html#acces-aux-elements-d-un-tableau">Accès aux éléments d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonctions-mathematiques-numpy.html#exemple">Exemple</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonctions-mathematiques-numpy.html#comparaison-entre-around-x-0-et-trunc-x">Comparaison entre around(x,0) et trunc(x)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#creation-d-une-courbe">Création d’une courbe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#utilisation-de-plot">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#definition-du-domaine-des-axes-xlim-et-ylim">Définition du domaine des axes - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#ajout-d-un-titre-title">Ajout d’un titre - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#ajout-d-une-legende-legend">Ajout d’une légende - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">legend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#labels-sur-les-axes-xlabel-et-ylabel">Labels sur les axes - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlabel()</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylabel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#exemple-avec-un-legende">Exemple avec un légende</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#formats-de-courbes">Formats de courbes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#style-de-ligne">Style de ligne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#symbole-marker">Symbole (« marker »)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#couleur">Couleur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#largeur-de-ligne">Largeur de ligne</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#trace-de-formes">Tracé de formes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#l-instruction-axis-equal">L’instruction <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-courbes.html#trace-d-un-cercle">Tracé d’un cercle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#tableaux-monodimensionnels-1d">Tableaux monodimensionnels (1D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#tableaux-bidimensionnels-2d">Tableaux bidimensionnels (2D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#la-fonction-numpy-size">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#la-fonction-numpy-shape">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.shape()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#produit-terme-a-terme">Produit terme à terme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#produit-matriciel-numpy-dot">Produit matriciel - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.dot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#transpose">Transposé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#complexe-conjugue-numpy-conj">Complexe conjugué - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.conj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#transpose-complexe-conjugue">Transposé complexe conjugué</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#slicing-des-tableaux-2d">Slicing des tableaux 2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#tableaux-de-0-numpy-zeros">Tableaux de 0 - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.zeros()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#tableaux-de-1-numpy-ones">Tableaux de 1 - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.ones()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#matrice-identite-numpy-eye">Matrice identité - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.eye()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#determinant-numpy-linalg-det">Déterminant - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linalg.det()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#inverse-numpy-linalg-inv">Inverse - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linalg.inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#resolution-d-un-systeme-d-equations-lineaires-numpy-linalg-solve">Résolution d’un système d’équations linéaires - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linalg.solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#valeurs-propres-et-vecteurs-propres-numpy-linalg-eig">Valeurs propres et vecteurs propres - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linalg.eig()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tableaux-numpy.html#obtention-d-un-tableau-2d-ligne-ou-colonne">Obtention d’un tableau 2D ligne ou colonne</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tracer-plusieurs-courbes.html#utilisation-de-subplot">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">subplot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visualisation-couleur.html#utilisation-de-meshgrid">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">meshgrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualisation-couleur.html#utilisation-de-pcolor">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">pcolor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualisation-couleur.html#utilisation-de-pcolormesh">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">pcolormesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualisation-couleur.html#utilisation-de-imshow">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">imshow()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html#visualisation-de-la-partie-reelle-et-de-la-partie-imaginaire">Visualisation de la partie réelle et de la partie imaginaire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html#visualisation-du-module-et-de-l-argument">Visualisation du module et de l’argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html#visualisation-de-l-argument-grace-a-des-couleurs">Visualisation de l’argument grâce à des couleurs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="animation-matplotlib.html#animation-avec-effacement">Animation avec effacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animation-matplotlib.html#animation-sans-effacement">Animation sans effacement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#introduction-a-la-fft-et-a-la-dft">Introduction à la FFT et à la DFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#exemples-simples">Exemples simples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#fonction-fftfreq">Fonction fftfreq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#fonction-fftshift">Fonction fftshift</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#exemple-dans-le-cas-d-une-gaussienne">Exemple dans le cas d’une gaussienne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#exemple-avec-visualisation-en-couleur-de-la-transformee-de-fourier">Exemple avec visualisation en couleur de la transformée de Fourier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-introduction.html#exemple-avec-translation">Exemple avec translation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fft-spatiale.html#presentation">Présentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-spatiale.html#exemple-dans-le-cas-d-une-gaussienne">Exemple dans le cas d’une gaussienne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-spatiale.html#exemple-avec-visualisation-en-couleur-de-la-transformee-de-fourier">Exemple avec visualisation en couleur de la transformée de Fourier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft-spatiale.html#exemple-pour-le-produit-d-un-cosinus-par-une-gaussienne">Exemple pour le produit d’un cosinus par une gaussienne</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#definition-d-une-classe-point">Définition d’une classe <code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#creation-d-un-objet-de-type-point">Création d’un objet de type <code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#definition-des-attributs">Définition des attributs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#definition-des-methodes">Définition des méthodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#la-notion-de-constructeur">La notion de constructeur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#definition-d-attributs-prives">Définition d’attributs privés</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#accesseurs-et-mutateurs">Accesseurs et mutateurs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#attributs-de-classe">Attributs de classe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes-et-objets.html#methodes-de-classe">Méthodes de classe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfaces.html#creation-d-une-premiere-fenetre">Création d’une première fenêtre</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaces.html#creation-d-une-fenetre-personnalisee">Création d’une fenêtre personnalisée</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaces.html#gestion-des-evenements-de-la-souris-dans-la-fenetre">Gestion des événements de la souris dans la fenêtre</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaces.html#utilisation-de-l-information-associee-a-un-evenement">Utilisation de l’information associée à un événement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="boutons.html#creation-d-un-bouton-qpushbutton">Création d’un bouton - <code class="xref py py-class docutils literal notranslate"><span class="pre">QPushButton</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="boutons.html#la-notion-de-gestionnaire-de-mise-en-forme">La notion de gestionnaire de mise en forme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boutons.html#gestion-du-bouton">Gestion du bouton</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="composants.html#case-a-cocher-qcheckbox">Case à cocher - <code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="composants.html#etiquette-qlabel">Etiquette - <code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="composants.html#champ-de-texte-qlineedit">Champ de texte - <code class="xref py py-class docutils literal notranslate"><span class="pre">QLineEdit</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction-pylab.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-pylab.html#tableaux-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-pylab.html#la-fonction-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">arange()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-pylab.html#la-fonction-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">linspace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-pylab.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#arrondis">Arrondis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonctions_mathematiques.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tableaux.html#tableaux-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tableaux.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="animations.html#animation-avec-effacement">Animation avec effacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animations.html#animation-sans-effacement">Animation sans effacement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="courbes_complexes.html#visualisation-de-la-partie-reelle-et-de-la-partie-imaginaire">Visualisation de la partie réelle et de la partie imaginaire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="courbes_complexes.html#visualisation-du-module-et-de-l-argument">Visualisation du module et de l’argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="courbes_complexes.html#visualisation-de-l-argument-grace-a-des-couleurs">Visualisation de l’argument grâce à des couleurs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="derivee-fonction.html#exemple-de-programme">Exemple de programme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="derivee-fonction.html#exemples-avec-vectorisation-du-calcul">Exemples avec vectorisation du calcul</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration-rectangle-trapeze.html">Méthodes des rectangles et des trapèzes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration-simpson.html">Intégration par la méthode de Simpson</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfaces-pyqt4.html">Les bases de la programmation des interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boutons-pyqt4.html">Premier bouton avec PyQt4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composants-pyqt4.html">Les composants graphiques usuels avec PyQt4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt-matplotlib.html">Qt4 et Matplotlib - Exemple complet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="index">
+<h1>Index<a class="headerlink" href="#index" title="Lien permanent vers ce titre">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+</ul>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Retour haut de page</a>
+      
+    </p>
+
+   <p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="CoursPython" data-lang="fr">Tweeter</a>
+<a href="https://twitter.com/CoursPython" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @CoursPython</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </p>
+    <p>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/80x15.png" align="absmiddle"/></a> 2020, David Cassagne.
+Création le 15 Oct 2012.
+        Mis à jour le 07 sept. 2020.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

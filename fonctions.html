@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctions en Python &#8212; Cours Python</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Modules et importations" href="modules.html" />
+    <link rel="prev" title="Dictionnaires en Python" href="dictionnaire.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+<!-- Ajout DC pour Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35563429-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.courspython.com/">
+          CoursPython</a>
+<!--        <span class="navbar-text navbar-version pull-left"><b>2</b></span>
+ -->
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="sommaire.html">Sommaire</a></li>
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="sommaire.html">Plan <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#creation-d-une-courbe">Création d’une courbe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#formats-de-courbes">Formats de courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#trace-de-formes">Tracé de formes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-pi-Monte-Carlo.html">Calcul de <span class="math notranslate nohighlight">\(\pi\)</span> avec la méthode Monte-Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-quantique.html">TP Quantique - Valeurs propres et vecteurs propres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="dictionnaire.html" title="Previous Chapter: Dictionnaires en Python"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Dictionnaires...</span>
+    </a>
+  </li>
+  <li>
+    <a href="modules.html" title="Next Chapter: Modules et importations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Modules et im... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            <form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Rechercher" />
+ </div>
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fonctions en Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definition-d-une-fonction-def">Définition d’une fonction - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fonction-sans-parametre">Fonction sans paramètre</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fonction-avec-parametre">Fonction avec paramètre</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-d-une-variable-comme-argument">Utilisation d’une variable comme argument</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fonction-avec-plusieurs-parametres">Fonction avec plusieurs paramètres</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-locales-variables-globales">Variables locales, variables globales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-d-une-variable-globale-global">Utilisation d’une variable globale - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#vraies-fonctions-et-procedures">« Vraies » fonctions et procédures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valeurs-par-defaut-pour-les-parametres">Valeurs par défaut pour les paramètres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arguments-avec-etiquettes">Arguments avec étiquettes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilisation-des-fonctions-dans-un-script">Utilisation des fonctions dans un script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resume-structure-d-un-programme-python-type">Résumé : structure d’un programme Python type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+	</div>
+  </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="fonctions-en-python">
+<h1>Fonctions en Python<a class="headerlink" href="#fonctions-en-python" title="Lien permanent vers ce titre">¶</a></h1>
+<p>La présentation de cette page est inspirée par le livre de Gérard Swinnen <a class="reference external" href="http://inforef.be/swi/python.htm">« Apprendre à programmer avec Python 3 »</a> disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/2.0/fr/">CC BY-NC-SA 2.0</a>.</p>
+<p>Nous avons déjà rencontré diverses fonctions prédéfinies : <a class="reference internal" href="introduction-python.html#print"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">print()</span></code></a>, <a class="reference internal" href="introduction-python.html#input"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">input()</span></code></a>, <a class="reference internal" href="introduction-python.html#range"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">range()</span></code></a>, <a class="reference internal" href="introduction-python.html#len"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">len()</span></code></a>.</p>
+<p>Lorsqu’une tâche doit être réalisée plusieurs fois par un programme avec seulement des paramètres différents, on peut l’isoler au sein d’une fonction. Cette approche est également intéressante si la personne qui définit la fonction est différente de celle qui l’utilise. Par exemple, nous avons déjà utilisé la fonction <a class="reference internal" href="introduction-python.html#print"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">print()</span></code></a> qui avait été définie par quelqu’un d’autre.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="https://python.developpez.com/cours/apprendre-python3/?page=page_9">https://python.developpez.com/cours/apprendre-python3/?page=page_9</a></p>
+</div>
+<div class="section" id="definition-d-une-fonction-def">
+<span id="def"></span><span id="index-0"></span><h2>Définition d’une fonction - <a class="reference internal" href="#def"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a><a class="headerlink" href="#definition-d-une-fonction-def" title="Lien permanent vers ce titre">¶</a></h2>
+<p><strong>Syntaxe</strong></p>
+<p>La syntaxe Python pour la définition d’une fonction est la suivante :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nom_fonction</span><span class="p">(</span><span class="n">liste</span> <span class="n">de</span> <span class="n">paramètres</span><span class="p">):</span>
+      <span class="n">bloc</span> <span class="n">d</span><span class="s1">&#39;instructions</span>
+</pre></div>
+</div>
+<p>Vous pouvez choisir n’importe quel nom pour la fonction que vous créez, à l’exception des mots-clés réservés du langage, et à la condition de n’utiliser aucun caractère spécial ou accentué (le caractère souligné « _ » est permis). Comme c’est le cas pour les noms de variables, on utilise par convention des minuscules, notamment au début du nom (les noms commençant par une majuscule seront réservés aux classes).</p>
+<p><strong>Corps de la fonction</strong></p>
+<p>Comme les instructions <a class="reference internal" href="tests.html#if"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a>, <a class="reference internal" href="boucles.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> et <a class="reference internal" href="boucles.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a>, l’instruction <a class="reference internal" href="#def"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a> est une instruction composée. La ligne contenant cette instruction se termine obligatoirement par un deux-points <code class="docutils literal notranslate"><span class="pre">:</span></code>, qui introduisent un bloc d’instructions qui est précisé grâce à l’indentation.
+Ce bloc d’instructions constitue le <strong>corps de la fonction</strong>.</p>
+<div class="section" id="fonction-sans-parametre">
+<h3>Fonction sans paramètre<a class="headerlink" href="#fonction-sans-parametre" title="Lien permanent vers ce titre">¶</a></h3>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compteur3</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">)</span>
+<span class="n">compteur3</span><span class="p">()</span>
+<span class="n">compteur3</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+compteur3()%3A%0A++++i+%3D+0%0A++++while+i+%3C+3%3A%0A++++++++print(i)%0A++++++++i+%3D+i+%2B+1%0A%0Aprint(%22bonjour%22)%0Acompteur3()%0Acompteur3()&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bonjour</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>En entrant ces quelques lignes, nous avons défini une fonction très simple qui compte jusqu’à 2. Notez bien les parenthèses, les deux-points, et l’indentation du bloc d’instructions qui suit la ligne d’en-tête (c’est ce bloc d’instructions qui constitue le corps de la fonction proprement dite).</p>
+<p>Après la définition de la fonction, on trouve le programme principal qui débute par l’instruction <code class="docutils literal notranslate"><span class="pre">print(&quot;bonjour&quot;)</span></code>.
+Il y a ensuite au sein du programme principal, l’appel de la fonction grâce à <code class="docutils literal notranslate"><span class="pre">compteur3()</span></code>.</p>
+<p>Il est également possible de sauvegarder ce programme en tant que script au sein d’IDLE. Après avoir exécuté ce script, pour utiliser à nouveau la fonction que nous venons de définir, il suffit de l’appeler par son nom au niveau du shell.
+Ainsi :</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">compteur3</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>provoque l’affichage de :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>Nous pouvons maintenant réutiliser cette fonction à plusieurs reprises, autant de fois que nous le souhaitons.</p>
+<p>Nous pouvons également l’incorporer dans la définition d’une autre fonction.</p>
+<p><strong>Exemple de fonction qui appelle une autre fonction</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compteur3</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">double_compteur3</span><span class="p">():</span>
+    <span class="n">compteur3</span><span class="p">()</span>
+    <span class="n">compteur3</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">)</span>
+<span class="n">double_compteur3</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+compteur3()%3A%0A++++i+%3D+0%0A++++while+i+%3C+3%3A%0A++++++++print(i)%0A++++++++i+%3D+i+%2B+1%0A%0Adef+double_compteur3()%3A%0A++++compteur3()%0A++++compteur3()%0A%0Aprint(%22bonjour%22)%0Adouble_compteur3()&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Une première fonction peut donc appeler une deuxième fonction, qui elle-même en appelle une troisième, etc.</p>
+<p>Créer une nouvelle fonction offre l’opportunité de donner un nom à tout un ensemble d’instructions. De cette manière, on peut simplifier le corps principal d’un programme, en dissimulant un algorithme secondaire complexe sous une commande unique, à laquelle on peut donner un nom explicite.</p>
+<p>Une fonction est donc en quelque sorte une nouvelle instruction personnalisée, qu’il est possible d’ajouter librement à notre langage de programmation.</p>
+</div>
+<div class="section" id="fonction-avec-parametre">
+<h3>Fonction avec paramètre<a class="headerlink" href="#fonction-avec-parametre" title="Lien permanent vers ce titre">¶</a></h3>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compteur</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">compteur</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">compteur</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+compteur(stop)%3A%0A++++i+%3D+0%0A++++while+i+%3C+stop%3A%0A++++++++print(i)%0A++++++++i+%3D+i+%2B+1%0A%0Acompteur(4)%0Acompteur(2)&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Pour tester cette nouvelle fonction, il nous suffit de l’appeler avec un argument.</p>
+</div>
+<div class="section" id="utilisation-d-une-variable-comme-argument">
+<h3>Utilisation d’une variable comme argument<a class="headerlink" href="#utilisation-d-une-variable-comme-argument" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’argument que nous utilisons dans l’appel d’une fonction peut être une variable.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compteur</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">compteur</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+compteur(stop)%3A%0A++++i+%3D+0%0A++++while+i+%3C+stop%3A%0A++++++++print(i)%0A++++++++i+%3D+i+%2B+1%0A%0Aa+%3D+5%0Acompteur(a)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Dans l’exemple ci-dessus, l’argument que nous passons à la fonction <code class="docutils literal notranslate"><span class="pre">compteur()</span></code> est le contenu de la variable <code class="docutils literal notranslate"><span class="pre">a</span></code>. A l’intérieur de la fonction, cet argument est affecté au paramètre <code class="docutils literal notranslate"><span class="pre">stop</span></code>, qui est une tout autre variable.</p>
+<p>Notez donc bien dès à présent que :</p>
+<ul class="simple">
+<li><p>Le nom d’une variable que nous passons comme argument n’a rien à voir avec le nom du paramètre correspondant dans la fonction.</p></li>
+<li><p>Ces noms peuvent être identiques si vous le voulez, mais vous devez bien comprendre qu’ils ne désignent pas la même chose (en dépit du fait qu’ils puissent contenir une valeur identique).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="fonction-avec-plusieurs-parametres">
+<h3>Fonction avec plusieurs paramètres<a class="headerlink" href="#fonction-avec-plusieurs-parametres" title="Lien permanent vers ce titre">¶</a></h3>
+<p><strong>Exemple</strong></p>
+<p>La fonction suivante utilise trois paramètres : <code class="docutils literal notranslate"><span class="pre">start</span></code> qui contient la  valeur de départ, <code class="docutils literal notranslate"><span class="pre">stop</span></code> la borne supérieure exclue comme dans l’exemple précédent et <code class="docutils literal notranslate"><span class="pre">step</span></code> le pas du compteur.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compteur_complet</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">step</span>
+
+<span class="n">compteur_complet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+compteur_complet(start,+stop,+step)%3A%0A++++i+%3D+start%0A++++while+i+%3C+stop%3A%0A++++++++print(i)%0A++++++++i+%3D+i+%2B+step%0A%0Acompteur_complet(1,+7,+2)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Pour définir une fonction avec plusieurs paramètres, il suffit d’inclure ceux-ci entre les parenthèses qui suivent le nom de la fonction, en les séparant à l’aide de virgules.</p></li>
+<li><p>Lors de l’appel de la fonction, les arguments utilisés doivent être fournis dans le même ordre que celui des paramètres correspondants (en les séparant eux aussi à l’aide de virgules). Le premier argument sera affecté au premier paramètre, le second argument sera affecté au second paramètre, et ainsi de suite.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="variables-locales-variables-globales">
+<h2>Variables locales, variables globales<a class="headerlink" href="#variables-locales-variables-globales" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Lorsqu’une fonction est appelée, Python réserve pour elle (dans la mémoire de l’ordinateur) <strong>un espace de noms</strong>. Cet espace de noms <strong>local</strong> à la fonction est à distinguer de l’espace de noms <strong>global</strong> où se trouvait les variables du programme principal. Dans l’espace de noms local, nous aurons des variables qui ne sont accessibles qu’au sein de la fonction. C’est par exemple le cas des variables <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code> et <code class="docutils literal notranslate"><span class="pre">i</span></code> dans l’exemple précédent.</p>
+<p>A chaque fois que nous définissons des variables à l’intérieur du corps d’une fonction, ces variables ne sont accessibles qu’à la fonction elle-même. On dit que ces variables sont des <strong>variables locales</strong> à la fonction. Une variable locale peut avoir le même nom qu’une variable de l’espace de noms global mais elle reste néanmoins indépendante.</p>
+<p>Les contenus des variables locales sont stockés dans l’espace de noms local qui est inaccessible depuis l’extérieur de la fonction.</p>
+<p>Les variables définies à l’extérieur d’une fonction sont des variables globales. Leur contenu est « visible » de l’intérieur d’une fonction, mais la fonction ne peut pas le modifier.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+test()%3A%0A++++b+%3D+5%0A++++print(a,+b)%0A++++%0Aa+%3D+2%0Ab+%3D+7%0Atest()%0Aprint(a,+b)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="mi">5</span>
+<span class="mi">2</span> <span class="mi">7</span>
+</pre></div>
+</div>
+<p><strong>Explications en vidéo</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HTaOCnBaQfo?rel=0&cc_load_policy=1" frameborder="0" allowfullscreen></iframe><div class="section" id="utilisation-d-une-variable-globale-global">
+<span id="global"></span><span id="index-1"></span><h3>Utilisation d’une variable globale - <a class="reference internal" href="#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a><a class="headerlink" href="#utilisation-d-une-variable-globale-global" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Il peut se faire par exemple que vous ayez à définir une fonction qui soit capable de modifier une variable globale. Pour atteindre ce résultat, il vous suffira d’utiliser l’instruction <a class="reference internal" href="#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a>. Cette instruction permet d’indiquer - à l’intérieur de la définition d’une fonction - quelles sont les variables à traiter globalement.</p>
+<p>On va ici créer une fonction qui a accès à la variable globale <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">b</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="http://www.pythontutor.com/visualize.html#code=def+test()%3A%0A++++global+b%0A++++b+%3D+5%0A++++print(a,+b)%0A++++%0Aa+%3D+2%0Ab+%3D+7%0Atest()%0Aprint(a,+b)&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0" target=_blank>Exécuter</a></p><p>Affichage après exécution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="mi">5</span>
+<span class="mi">2</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>La présentation de cette page est inspirée par le livre de Gérard Swinnen <a class="reference external" href="http://inforef.be/swi/python.htm">« Apprendre à programmer avec Python 3 »</a> disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/2.0/fr/">CC BY-NC-SA 2.0</a>.</p>
+</div>
+</div>
+<div class="section" id="vraies-fonctions-et-procedures">
+<h2>« Vraies » fonctions et procédures<a class="headerlink" href="#vraies-fonctions-et-procedures" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour les puristes, les fonctions que nous avons décrites jusqu’à présent ne sont pas tout à fait des fonctions au sens strict, mais plus exactement des procédures. Une « vraie » fonction (au sens strict) doit en effet renvoyer une valeur lorsqu’elle se termine. Une « vraie » fonction peut s’utiliser à la droite du signe égale dans des expressions telles que y = sin(a). On comprend aisément que dans cette expression, la fonction sin() renvoie une valeur (le sinus de l’argument) qui est directement affectée à la variable y.</p>
+<p>Voici un exemple extrêmement simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cube</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">w</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">27</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cube</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="valeurs-par-defaut-pour-les-parametres">
+<h2>Valeurs par défaut pour les paramètres<a class="headerlink" href="#valeurs-par-defaut-pour-les-parametres" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Dans la définition d’une fonction, il est possible de définir un argument par défaut pour chacun des paramètres. On obtient ainsi une fonction qui peut être appelée avec une partie seulement des arguments attendus.</p>
+<p><strong>Exemples :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">politesse</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">titre</span> <span class="o">=</span><span class="s2">&quot;Monsieur&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Veuillez agréer,&quot;</span><span class="p">,</span> <span class="n">titre</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="s2">&quot;, mes salutations distinguées.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">politesse</span><span class="p">(</span><span class="s2">&quot;Dupont&quot;</span><span class="p">)</span>
+<span class="go">Veuillez agréer, Monsieur Dupont , mes salutations distinguées.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">politesse</span><span class="p">(</span><span class="s1">&#39;Durand&#39;</span><span class="p">,</span> <span class="s1">&#39;Mademoiselle&#39;</span><span class="p">)</span>
+<span class="go">Veuillez agréer, Mademoiselle Durand , mes salutations distinguées.</span>
+</pre></div>
+</div>
+<p>Lorsque l’on appelle cette fonction en ne lui fournissant que le premier argument, le second reçoit tout de même une valeur par défaut. Si l’on fournit les deux arguments, la valeur par défaut pour le deuxième est tout simplement ignorée.</p>
+</div>
+<div class="section" id="arguments-avec-etiquettes">
+<h2>Arguments avec étiquettes<a class="headerlink" href="#arguments-avec-etiquettes" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Dans la plupart des langages de programmation, les arguments que l’on fournit lors de l’appel d’une fonction doivent être fournis exactement dans le même ordre que celui des paramètres qui leur correspondent dans la définition de la fonction.</p>
+<p>Python autorise cependant une souplesse beaucoup plus grande. Si les paramètres annoncés dans la définition de la fonction ont reçu chacun une valeur par défaut, sous la forme déjà décrite ci-dessus, on peut faire appel à la fonction en fournissant les arguments correspondants <strong>dans n’importe quel ordre, à la condition de désigner nommément les paramètres correspondants</strong>.</p>
+<p><strong>Exemple :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">oiseau</span><span class="p">(</span><span class="n">voltage</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">etat</span><span class="o">=</span><span class="s2">&quot;allumé&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;danser la java&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ce perroquet ne pourra pas&quot;</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;si vous le branchez sur&quot;</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="s2">&quot;volts !&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;auteur de ceci est complètement&quot;</span><span class="p">,</span> <span class="n">etat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oiseau</span><span class="p">(</span><span class="n">etat</span><span class="o">=</span><span class="s2">&quot;givré&quot;</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;vous approuver&quot;</span><span class="p">)</span>
+<span class="go">Ce perroquet ne pourra pas vous approuver</span>
+<span class="go">si vous le branchez sur 250 volts !</span>
+<span class="go">L&#39;auteur de ceci est complètement givré</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oiseau</span><span class="p">()</span>
+<span class="go">Ce perroquet ne pourra pas danser la java</span>
+<span class="go">si vous le branchez sur 100 volts !</span>
+<span class="go">L&#39;auteur de ceci est complètement allumé</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="utilisation-des-fonctions-dans-un-script">
+<h2>Utilisation des fonctions dans un script<a class="headerlink" href="#utilisation-des-fonctions-dans-un-script" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour cette première approche des fonctions, nous n’avons utilisé jusqu’ici que des fonctions dans des scripts et pas de programme principal dans le script.
+Veuillez donc essayer vous-même le petit programme ci-dessous, lequel calcule le volume d’une sphère a l’aide de la formule :</p>
+<div class="math notranslate nohighlight">
+\[V = \frac{4}{3} \pi R^3\]</div>
+<p><strong>Exemple :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">cube</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">**</span><span class="mi">3</span>
+        
+<span class="k">def</span> <span class="nf">volume_sphere</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">cube</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez la valeur du rayon : &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le volume de cette sphere vaut&quot;</span><span class="p">,</span> <span class="n">volume_sphere</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A bien y regarder, ce programme comporte deux parties :</p>
+<ul class="simple">
+<li><p>les deux fonctions cube() et volume_sphere()</p></li>
+<li><p>le <strong>corps principal du programme</strong>.</p></li>
+</ul>
+<p>Dans le corps principal du programme, il y a un appel de la fonction volume_sphere().</p>
+<p>A l’intérieur de la fonction volume_sphere(), il y a un appel de la fonction cube().</p>
+<p>Notez bien que les deux parties du programme ont été disposées dans un certain ordre :</p>
+<ul class="simple">
+<li><p>d’abord la définition des fonctions,</p></li>
+<li><p>et ensuite le corps principal du programme.</p></li>
+</ul>
+<p>Cette disposition est nécessaire, parce que l’interpréteur exécute les lignes d’instructions du programme l’une après l’autre, dans l’ordre où elles apparaissent dans le code source. Dans le script, la définition des fonctions doit donc précéder leur utilisation.</p>
+<p>Pour vous en convaincre, intervertissez cet ordre (en plaçant par exemple le corps principal du programme au début), et prenez note du type de message d’erreur qui est affiché lorsque vous essayez d’exécuter le script ainsi modifié.</p>
+<p>En fait, le corps principal d’un programme Python constitue lui-même une entité un peu particulière, qui est toujours reconnue dans le fonctionnement interne de l’interpréteur sous le nom réservé __main__ (le mot « main » signifie « principal », en anglais. Il est encadré par des caractères « souligné » en double, pour éviter toute confusion avec d’autres symboles). L’exécution d’un script commence toujours avec la première instruction de cette entité __main__, où qu’elle puisse se trouver dans le listing. Les instructions qui suivent sont alors exécutées l’une après l’autre, dans l’ordre, jusqu’au premier appel de fonction. Un appel de fonction est comme un détour dans le flux de l’exécution : au lieu de passer à l’instruction suivante, l’interpréteur exécute la fonction appelée, puis revient au programme appelant pour continuer le travail interrompu. Pour que ce mécanisme puisse fonctionner, il faut que l’interpréteur ait pu lire la définition de la fonction avant l’entité __main__, et celle-ci sera donc placée en général à la fin du script.</p>
+<p>Dans notre exemple, l’entité __main__ appelle une première fonction qui elle-même en appelle une deuxième. Cette situation est très fréquente en programmation. Si vous voulez comprendre correctement ce qui se passe dans un programme, vous devez donc apprendre à lire un script, non pas de la première à la dernière ligne, mais plutôt en suivant un cheminement analogue à ce qui se passe lors de l’exécution de ce script. Cela signifie concrètement que vous devrez souvent analyser un script en commençant par ses dernières lignes !</p>
+<div class="section" id="resume-structure-d-un-programme-python-type">
+<h3>Résumé : structure d’un programme Python type<a class="headerlink" href="#resume-structure-d-un-programme-python-type" title="Lien permanent vers ce titre">¶</a></h3>
+<img alt="_images/structure_programme.png" src="_images/structure_programme.png" />
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="https://python.developpez.com/cours/apprendre-python3/?page=page_9">https://python.developpez.com/cours/apprendre-python3/?page=page_9</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Retour haut de page</a>
+      
+    </p>
+
+   <p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="CoursPython" data-lang="fr">Tweeter</a>
+<a href="https://twitter.com/CoursPython" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @CoursPython</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </p>
+    <p>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/80x15.png" align="absmiddle"/></a> 2020, David Cassagne.
+Création le 15 Oct 2012.
+        Mis à jour le 06 sept. 2020.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

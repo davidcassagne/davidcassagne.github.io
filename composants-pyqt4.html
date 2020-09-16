@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les composants graphiques usuels avec PyQt4 &#8212; Cours Python</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Qt4 et Matplotlib - Exemple complet" href="qt-matplotlib.html" />
+    <link rel="prev" title="Premier bouton avec PyQt4" href="boutons-pyqt4.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+<!-- Ajout DC pour Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35563429-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.courspython.com/">
+          CoursPython</a>
+<!--        <span class="navbar-text navbar-version pull-left"><b>2</b></span>
+ -->
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="sommaire.html">Sommaire</a></li>
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="sommaire.html">Plan <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#creation-d-une-courbe">Création d’une courbe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#formats-de-courbes">Formats de courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction-courbes.html#trace-de-formes">Tracé de formes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="annexes.html">Annexes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-pi-Monte-Carlo.html">Calcul de <span class="math notranslate nohighlight">\(\pi\)</span> avec la méthode Monte-Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-quantique.html">TP Quantique - Valeurs propres et vecteurs propres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="boutons-pyqt4.html" title="Previous Chapter: Premier bouton avec PyQt4"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Premier bouto...</span>
+    </a>
+  </li>
+  <li>
+    <a href="qt-matplotlib.html" title="Next Chapter: Qt4 et Matplotlib - Exemple complet"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Qt4 et Matplo... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            <form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Rechercher" />
+ </div>
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-courbes.html">Tracé de courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="annexes.html">Annexes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="interfaces-pyqt4.html">Les bases de la programmation des interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boutons-pyqt4.html">Premier bouton avec PyQt4</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Les composants graphiques usuels avec PyQt4</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#les-cases-a-cocher-qcheckbox">Les cases à cocher - <code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-etiquettes-qlabel">Les étiquettes - <code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-champs-de-texte-qlineedit">Les champs de texte - <code class="xref py py-class docutils literal notranslate"><span class="pre">QLineEdit</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qt-matplotlib.html">Qt4 et Matplotlib - Exemple complet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+	</div>
+  </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="les-composants-graphiques-usuels-avec-pyqt4">
+<h1>Les composants graphiques usuels avec PyQt4<a class="headerlink" href="#les-composants-graphiques-usuels-avec-pyqt4" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Après avoir abordé la gestion d’un composant graphique simple dans la page <a class="reference internal" href="boutons.html"><span class="doc">Premier bouton en Python avec Qt 5</span></a>, nous allons considérer ici quelques autres composants graphiques usuels : la <strong>case à cocher</strong>, l”<strong>étiquette</strong> et le <strong>champ de texte</strong>.
+Nous travaillons ici avec PyQt4, voir <a class="reference internal" href="interfaces-pyqt4.html"><span class="doc">Les bases de la programmation des interfaces graphiques avec Qt4 et PyQt4</span></a>.</p>
+<div class="section" id="les-cases-a-cocher-qcheckbox">
+<h2>Les cases à cocher - <a class="reference internal" href="composants.html#QCheckBox" title="QCheckBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a><a class="headerlink" href="#les-cases-a-cocher-qcheckbox" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une case à cocher permet d’effectuer un choix (coché/non coché) pour une case. Elle est instanciée grâce à la classe <a class="reference internal" href="composants.html#QCheckBox" title="QCheckBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a>.</p>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">QCheckBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Case à cocher dont le constructeur reçoit un libellé qui sera affiché à côté de la case pour en préciser le rôle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – libellé qui sera affiché à côté de la case</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">checkState</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Renvoie la valeur de l’état de la case</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Qt.Checked</span></code> ou <code class="docutils literal notranslate"><span class="pre">Qt.Unchecked</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">setCheckState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Fixe la valeur de l’état de la case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>state</strong> – état à prendre : <code class="docutils literal notranslate"><span class="pre">Qt.Checked</span></code> ou <code class="docutils literal notranslate"><span class="pre">Qt.Unchecked</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="http://pyqt.sourceforge.net/Docs/PyQt4/qcheckbox.html">http://pyqt.sourceforge.net/Docs/PyQt4/qcheckbox.html</a></p>
+</div>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QCheckBox</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">case</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Voici ma premiere case a cocher&quot;</span><span class="p">)</span>
+<span class="n">case</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="gestion-d-une-case-a-cocher">
+<h3>Gestion d’une case à cocher<a class="headerlink" href="#gestion-d-une-case-a-cocher" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On peut gérer une case à cocher de 2 façons :</p>
+<ul class="simple">
+<li><p>en gérant une action sur la case</p></li>
+<li><p>en cherchant à connaître son état (coché/non coché)</p></li>
+</ul>
+<div class="section" id="gestion-de-l-action-sur-une-case-a-cocher">
+<h4>Gestion de l’action sur une case à cocher<a class="headerlink" href="#gestion-de-l-action-sur-une-case-a-cocher" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Chaque action de l’utilisateur sur une case à cocher déclenche un événement (comme pour un bouton, sauf que cet événement se produit à la fois quand on coche ou on décoche la case).</p>
+<p>On va connecter le signal <strong>stateChanged</strong> de la classe <a class="reference internal" href="composants.html#QCheckBox" title="QCheckBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a> avec l’appel d’une fonction.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QCheckBox</span>
+
+<span class="k">def</span> <span class="nf">etat_change</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;action sur la case&quot;</span><span class="p">)</span>
+    
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="c1"># creation de la case a cocher</span>
+<span class="n">case</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Voici ma premiere case a cocher&quot;</span><span class="p">)</span>
+<span class="c1"># on connecte le signal &quot;stateChanged&quot; a la fonction etat_change</span>
+<span class="n">case</span><span class="o">.</span><span class="n">stateChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">etat_change</span><span class="p">)</span>
+<span class="c1"># la case a cocher est rendue visible</span>
+<span class="n">case</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="etat-d-une-case-a-cocher">
+<h4>Etat d’une case à cocher<a class="headerlink" href="#etat-d-une-case-a-cocher" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On peut connaître l’état d’une case à cocher en utilisant la méthode <a class="reference internal" href="composants.html#QCheckBox.checkState" title="QCheckBox.checkState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">checkState()</span></code></a> de la classe <a class="reference internal" href="composants.html#QCheckBox" title="QCheckBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">QCheckBox</span></code></a>. On peut aussi changer l’état de la case en utilisant la méthode <a class="reference internal" href="composants.html#QCheckBox.setCheckState" title="QCheckBox.setCheckState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setCheckState()</span></code></a>.</p>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QCheckBox</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+
+<span class="k">class</span> <span class="nc">Fenetre</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Ma fenetre&quot;</span><span class="p">)</span>
+  
+        <span class="c1"># creation du gestionnaire de mise en forme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="c1"># on fixe le gestionnaire de mise en forme de la fenetre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># creation de la case a cocher</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">case</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Voici ma premiere case a cocher&quot;</span><span class="p">)</span>
+        <span class="c1"># on connecte le signal &quot;stateChanged&quot; a la methode etat_change</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">case</span><span class="o">.</span><span class="n">stateChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">etat_change</span><span class="p">)</span>
+        <span class="c1"># ajout de la case a cocher au gestionnaire de mise en forme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">case</span><span class="p">)</span>
+ 
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">etat_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;action sur la case&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span><span class="o">.</span><span class="n">checkState</span><span class="p">()</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">Checked</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coche&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;decoche&quot;</span><span class="p">)</span> 
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">fen</span> <span class="o">=</span> <span class="n">Fenetre</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p><strong>Autre exemple</strong></p>
+<p>Il également possible de connaître l’état de la case au travers de l’argument transmis à la fonction qui est appelée.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QCheckBox</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+
+<span class="k">def</span> <span class="nf">etat_change</span><span class="p">(</span><span class="n">etat</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;action sur la case&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">etat</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">Checked</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coche&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;decoche&quot;</span><span class="p">)</span> 
+    
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">case</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Voici ma premiere case a  cocher&quot;</span><span class="p">)</span>
+<span class="n">case</span><span class="o">.</span><span class="n">stateChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">etat_change</span><span class="p">)</span>
+<span class="n">case</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="les-etiquettes-qlabel">
+<h2>Les étiquettes - <a class="reference internal" href="composants.html#QLabel" title="QLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a><a class="headerlink" href="#les-etiquettes-qlabel" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une étiquette (en anglais label) est un composant de type <a class="reference internal" href="composants.html#QLabel" title="QLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a> qui permet d’afficher un texte non éditable par l’utilisateur, mais que le programme peut faire évoluer.</p>
+<p>Le constructeur de <a class="reference internal" href="composants.html#QLabel" title="QLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a> précise le texte initial.</p>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">QLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Etiquette dont le constructeur précise le texte initial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – texte initial qui sera affiché</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">setText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Modifie le texte de l’étiquette.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>text</strong> – texte à afficher</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="http://pyqt.sourceforge.net/Docs/PyQt4/qlabel.html">http://pyqt.sourceforge.net/Docs/PyQt4/qlabel.html</a></p>
+</div>
+<p><strong>Exemple</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLabel</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Voici mon premier texte affiche avec un QLabel&quot;</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="exemple-avec-modification-du-texte">
+<h3>Exemple avec modification du texte<a class="headerlink" href="#exemple-avec-modification-du-texte" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le programme peut modifier à tout instant le texte d’un <a class="reference internal" href="composants.html#QLabel" title="QLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLabel</span></code></a> à l’aide de la méthode <a class="reference internal" href="composants.html#QLabel.setText" title="QLabel.setText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setText()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QLabel</span>
+
+<span class="k">class</span> <span class="nc">Fenetre</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Ma fenetre&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># attribut pour compter le nombre d&#39;appui sur le bouton</span>
+  
+        <span class="c1"># mise en place du gestionnaire de mise en forme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># mise en place du bouton</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bouton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;mon bouton avec une gestion d&#39;appui&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bouton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">appui_bouton</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bouton</span><span class="p">)</span>
+ 
+        <span class="c1"># mise en place de l&#39;etiquette</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;appui n = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">appui_bouton</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;appui n = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">fen</span> <span class="o">=</span> <span class="n">Fenetre</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="les-champs-de-texte-qlineedit">
+<h2>Les champs de texte - <a class="reference internal" href="composants.html#QLineEdit" title="QLineEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLineEdit</span></code></a><a class="headerlink" href="#les-champs-de-texte-qlineedit" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un champ de texte (aussi appelé champ de saisie de texte) est une zone de texte éditable dans laquelle l’utilisateur peut entrer ou modifier un texte. Il s’obtient en instanciant un objet de type <a class="reference internal" href="composants.html#QLineEdit" title="QLineEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QLineEdit</span></code></a>.</p>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">QLineEdit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">texte</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Champ de texte avec un texte initial facultatif.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>texte</strong> (<em>string</em>) – texte initial qui sera affiché</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">text</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Renvoie de le texte contenu dans le champ de texte.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>texte contenu dans le champ de texte</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p><strong>Exemple :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLineEdit</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">champ</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="s2">&quot;Voici mon premier champ de texte&quot;</span><span class="p">)</span>
+<span class="n">champ</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><a class="reference external" href="http://pyqt.sourceforge.net/Docs/PyQt4/qlineedit.html">http://pyqt.sourceforge.net/Docs/PyQt4/qlineedit.html</a></p>
+</div>
+<div class="section" id="exploitation-usuelle-d-un-champ-de-texte">
+<h3>Exploitation usuelle d’un champ de texte<a class="headerlink" href="#exploitation-usuelle-d-un-champ-de-texte" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On peut connaître à tout moment le texte contenu dans un champ de texte à l’aide de la méthode <a class="reference internal" href="composants.html#QLineEdit.text" title="QLineEdit.text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">text()</span></code></a>.</p>
+<p>Par exemple, on peut associer au champ de texte un bouton destiné à en valider le contenu. Le prélèvement du texte se fera alors simplement lors de l’action sur ce bouton.</p>
+<p><strong>Exemple :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
+                        <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span>
+
+<span class="k">class</span> <span class="nc">Fenetre</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Ma fenetre&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">250</span><span class="p">)</span>
+
+        <span class="c1"># mise en place du gestionnaire de mise en forme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># mise en place du champ de texte</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">champ</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="s2">&quot;Voici mon champ de texte&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">champ</span><span class="p">)</span>
+        
+        <span class="c1"># mise en place du bouton</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bouton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;COPIE&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bouton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">appui_bouton</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bouton</span><span class="p">)</span>
+ 
+        <span class="c1"># mise en place de l&#39;etiquette</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">appui_bouton</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">champ</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">fen</span> <span class="o">=</span> <span class="n">Fenetre</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Retour haut de page</a>
+      
+    </p>
+
+   <p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="CoursPython" data-lang="fr">Tweeter</a>
+<a href="https://twitter.com/CoursPython" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @CoursPython</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </p>
+    <p>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/80x15.png" align="absmiddle"/></a> 2020, David Cassagne.
+Création le 15 Oct 2012.
+        Mis à jour le 06 sept. 2020.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

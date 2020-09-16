@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://courspython.com/$1 [R,L]
+RedirectPermanent /intro_python.html  /introduction-python.html
+RedirectPermanent /intro_pylab.html  /introduction-pylab.html
+RedirectPermanent /intro_courbes.html  /introduction-courbes.html
+RedirectPermanent /variable-locale-variable-globale.html  /fonctions.html
+RedirectPermanent /fonctions_suite.html  /fonctions.html
+RedirectPermanent /visualisation_couleur.html  /visualisation-couleur.html
+RedirectPermanent /v2  https://courspython.com
+RedirectPermanent /v3  https://courspython.com
+
+# Redirect www urls to non-www
+RewriteCond %{HTTP_HOST} ^www.courspython.com$ [NC]
+RewriteRule ^(.*)$ http://courspython.com/$1 [R=301,L]

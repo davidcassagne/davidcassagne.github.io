@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracé de courbes &#8212; Cours Python</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/my-styles.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Tableaux et calcul matriciel avec NumPy" href="tableaux-numpy.html" />
+    <link rel="prev" title="Fonctions mathématiques avec NumPy" href="fonctions-mathematiques-numpy.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+<!-- Ajout DC pour Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35563429-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.courspython.com/">
+          CoursPython</a>
+<!--        <span class="navbar-text navbar-version pull-left"><b>2</b></span>
+ -->
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="sommaire.html">Sommaire</a></li>
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="sommaire.html">Plan <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-python.html">Introduction à Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles.html">Boucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html">Principaux types de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuple.html">Tuples en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionnaire.html">Dictionnaires en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules et importations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#variables-predefinies">Variables prédéfinies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-arange">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#la-fonction-numpy-linspace">La fonction <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apprendre-numpy.html#action-d-une-fonction-mathematique-sur-un-tableau">Action d’une fonction mathématique sur un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-trigonometriques">Fonctions trigonométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-hyperboliques">Fonctions hyperboliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-diverses">Fonctions diverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#fonctions-utiles-pour-les-nombres-complexes">Fonctions utiles pour les nombres complexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#arrondis">Arrondis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions-mathematiques-numpy.html#nombres-aleatoires">Nombres aléatoires</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation-d-une-courbe">Création d’une courbe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formats-de-courbes">Formats de courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trace-de-formes">Tracé de formes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-numpy-array">Tableaux - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">numpy.array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#tableaux-et-slicing">Tableaux et slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#algebre-lineaire">Algèbre linéaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux-numpy.html#changement-de-la-taille-d-un-tableau">Changement de la taille d’un tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tracer-plusieurs-courbes.html">Affichage de plusieurs tracés dans la même figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation-couleur.html">Visualisation d’une fonction de 2 variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracer-fonction-valeurs-complexes.html">Visualisation d’une fonction à valeurs complexes avec Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation-matplotlib.html">Animation avec matplotlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html">Transformation de Fourier, FFT et DFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-introduction.html#approximation-de-la-transformee-de-fourier-grace-a-la-fft">Approximation de la transformée de Fourier grâce à la FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft-spatiale.html">Approximation de la transformée de Fourier spatiale grâce à la FFT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#breve-introduction-a-la-programmation-orientee-objet">Brève introduction à la Programmation Orientée Objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#les-notions-de-classe-et-d-objet">Les notions de classe et d’objet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#la-notion-d-encapsulation">La notion d’encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes-et-objets.html#attributs-et-methodes-de-classe">Attributs et méthodes de classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Introduction aux interfaces graphiques en Python avec Qt 5 et PyQt5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boutons.html">Premier bouton en Python avec Qt 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composants.html">Composants graphiques usuels avec Qt 5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction-pylab.html">Introduction à PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions_mathematiques.html">Fonctions mathématiques avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tableaux.html">Tableaux et calcul matriciel avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animations.html">Animation avec PyLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="courbes_complexes.html">Visualisation d’une fonction à valeurs complexes avec PyLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivee-fonction.html">Dérivée d’une fonction en Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration-numerique.html">Intégration numérique</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface-graphique-pyqt4.html">Interfaces graphiques avec Qt4 et PyQt4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-pi-Monte-Carlo.html">Calcul de <span class="math notranslate nohighlight">\(\pi\)</span> avec la méthode Monte-Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TP-quantique.html">TP Quantique - Valeurs propres et vecteurs propres</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bibliographie.html#manuels-d-initiation-a-la-programmation">Manuels d’initiation à la programmation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="fonctions-mathematiques-numpy.html" title="Previous Chapter: Fonctions mathématiques avec NumPy"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Fonctions mat...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tableaux-numpy.html" title="Next Chapter: Tableaux et calcul matriciel avec NumPy"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tableaux et c... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            <form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Rechercher" />
+ </div>
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bases-python.html">Bases de Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apprendre-numpy.html">Introduction à NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fonctions-mathematiques-numpy.html">Fonctions mathématiques</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tracé de courbes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation-d-une-courbe">Création d’une courbe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilisation-de-plot">Utilisation de <code class="xref std std-keyword docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definition-du-domaine-des-axes-xlim-et-ylim">Définition du domaine des axes - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-d-un-titre-title">Ajout d’un titre - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-d-une-legende-legend">Ajout d’une légende - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">legend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#labels-sur-les-axes-xlabel-et-ylabel">Labels sur les axes - <code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlabel()</span></code> et <code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylabel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#affichage-de-plusieurs-courbes">Affichage de plusieurs courbes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-un-legende">Exemple avec un légende</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#formats-de-courbes">Formats de courbes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#style-de-ligne">Style de ligne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbole-marker">Symbole (« marker »)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#couleur">Couleur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#largeur-de-ligne">Largeur de ligne</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#trace-de-formes">Tracé de formes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#l-instruction-axis-equal">L’instruction <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trace-d-un-cercle">Tracé d’un cercle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tableaux-numpy.html">Tableaux et calcul matriciel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation.html">Visualisation et animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft-fourier.html">Transformation de Fourier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-et-objets.html">Classes et objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface-graphique.html">Introduction à Qt5 et PyQt5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylab.html">Utilisation de PyLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fiches-pratiques.html">Fiches pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annexes.html">Annexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+	</div>
+  </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="trace-de-courbes">
+<h1>Tracé de courbes<a class="headerlink" href="#trace-de-courbes" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Pour tracer des courbes, <strong>Python</strong> n’est pas suffisant et nous avons besoin des bibliothèques <strong>NumPy</strong> et <strong>matplotlib</strong> utilisées dans ce cours. Si vous ne disposez pas de ces bibliothèques, vous pouvez consulter la page <a class="reference internal" href="introduction-python.html"><span class="doc">Introduction à Python</span></a> pour installer l’environnement adapté à ce cours.</p>
+<p>Dans cette page, nous présentons deux syntaxes : la syntaxe « PyLab » qui est proche de celle de Matlab et la syntaxe « standard » qui est recommandée dans les nouvelles versions de <strong>matplotlib</strong>.</p>
+<p>Pour la syntaxe « PyLab », il suffit de faire :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Il est alors possible d’accéder directement aux fonctions de <strong>NumPy</strong> et <strong>matplotlib</strong>.</p>
+<p>Pour la syntaxe « standard », il faut importer le package <code class="docutils literal notranslate"><span class="pre">numpy</span></code> et le module <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> de <strong>matplotlib</strong>. On doit alors préciser les bibliothèques lors des appels des fonctions (voir les exemples ci-dessous). Pour en savoir plus sur la notion d’importation, vous pouvez consulter la page <a class="reference internal" href="modules.html"><span class="doc">Modules et importations</span></a>.</p>
+<div class="section" id="creation-d-une-courbe">
+<h2>Création d’une courbe<a class="headerlink" href="#creation-d-une-courbe" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="utilisation-de-plot">
+<span id="plot"></span><span id="index-0"></span><h3>Utilisation de <a class="reference internal" href="#plot"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">plot()</span></code></a><a class="headerlink" href="#utilisation-de-plot" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’instruction <a class="reference internal" href="#plot"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">plot()</span></code></a> permet de tracer des courbes qui relient des points dont les abscisses et ordonnées sont fournies dans des tableaux.</p>
+<p><strong>Exemple 1</strong></p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span> <span class="c1"># affiche la figure a l&#39;ecran</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># affiche la figure a l&#39;ecran</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="https://trinket.io/library/trinkets/ba302d0448" target=_blank>Exécuter avec trinket</a></p><p>(<a class="reference external" href="./courbes/courbe0a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe0a.png" src="_images/courbe0a.png" />
+</div>
+<p><strong>Exemple 2</strong></p>
+<p>Dans cet exemple, nous allons tracer la fonction <strong>cosinus</strong>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span> <span class="c1"># affiche la figure a l&#39;ecran</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># affiche la figure a l&#39;ecran</span>
+</pre></div>
+</div>
+<p><a class="btn btn-primary" href="https://trinket.io/python/a8645625fd" target=_blank>Exécuter avec trinket</a></p><p>(<a class="reference external" href="./courbes/courbe1a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe1a.png" src="_images/courbe1a.png" />
+</div>
+</div>
+<div class="section" id="definition-du-domaine-des-axes-xlim-et-ylim">
+<span id="ylim"></span><span id="xlim"></span><span id="index-1"></span><h3>Définition du domaine des axes - <a class="reference internal" href="#xlim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code></a> et <a class="reference internal" href="#ylim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylim()</span></code></a><a class="headerlink" href="#definition-du-domaine-des-axes-xlim-et-ylim" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Il est possible fixer indépendamment les domaines des abscisses et des ordonnées en utilisant les fonctions <a class="reference internal" href="#xlim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code></a> et <a class="reference internal" href="#ylim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylim()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+<span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Exemple 1</strong></p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe11a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe11a.png" src="_images/courbe11a.png" />
+</div>
+<p><strong>Exemple 2</strong></p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe12a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe12a.png" src="_images/courbe12a.png" />
+</div>
+<p><strong>Exemple 3</strong></p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe10a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe10a.png" src="_images/courbe10a.png" />
+</div>
+</div>
+<div class="section" id="ajout-d-un-titre-title">
+<span id="title"></span><span id="index-2"></span><h3>Ajout d’un titre - <a class="reference internal" href="#title"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">title()</span></code></a><a class="headerlink" href="#ajout-d-un-titre-title" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On peut ajouter un titre grâce à l’instruction <a class="reference internal" href="#title"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">title()</span></code></a>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fonction cosinus&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fonction cosinus&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe13a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe13a.png" src="_images/courbe13a.png" />
+</div>
+</div>
+<div class="section" id="ajout-d-une-legende-legend">
+<span id="legend"></span><span id="index-3"></span><h3>Ajout d’une légende - <a class="reference internal" href="#legend"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">legend()</span></code></a><a class="headerlink" href="#ajout-d-une-legende-legend" title="Lien permanent vers ce titre">¶</a></h3>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe3a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe3a.png" src="_images/courbe3a.png" />
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Pour faire afficher le label, il ne faut pas oublier de faire appel à l’instruction <a class="reference internal" href="#legend"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">legend()</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="labels-sur-les-axes-xlabel-et-ylabel">
+<span id="ylabel"></span><span id="xlabel"></span><span id="index-4"></span><h3>Labels sur les axes - <a class="reference internal" href="#xlabel"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlabel()</span></code></a> et <a class="reference internal" href="#ylabel"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylabel()</span></code></a><a class="headerlink" href="#labels-sur-les-axes-xlabel-et-ylabel" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Des labels sur les axes peuvent être ajoutés avec les fonctions <a class="reference internal" href="#xlabel"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlabel()</span></code></a> et <a class="reference internal" href="#ylabel"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">ylabel()</span></code></a>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;abscisses&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ordonnees&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;abscisses&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ordonnees&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe14a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe14a.png" src="_images/courbe14a.png" />
+</div>
+</div>
+</div>
+<div class="section" id="affichage-de-plusieurs-courbes">
+<h2>Affichage de plusieurs courbes<a class="headerlink" href="#affichage-de-plusieurs-courbes" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour afficher plusieurs courbes sur un même graphe, on peut procéder de la façon suivante :</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe5a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe5a.png" src="_images/courbe5a.png" />
+</div>
+<div class="section" id="exemple-avec-un-legende">
+<h3>Exemple avec un légende<a class="headerlink" href="#exemple-avec-un-legende" title="Lien permanent vers ce titre">¶</a></h3>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe6a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe6a.png" src="_images/courbe6a.png" />
+</div>
+</div>
+</div>
+<div class="section" id="formats-de-courbes">
+<h2>Formats de courbes<a class="headerlink" href="#formats-de-courbes" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible de préciser la couleur, le style de ligne et de symbole (« marker ») en ajoutant une chaîne de caractères de la façon suivante :</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s2">&quot;b:o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s2">&quot;b:o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe7a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe7a.png" src="_images/courbe7a.png" />
+</div>
+<div class="section" id="style-de-ligne">
+<h3>Style de ligne<a class="headerlink" href="#style-de-ligne" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les chaînes de caractères suivantes permettent de définir le style de ligne :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chaîne</p></th>
+<th class="head"><p>Effet</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p>ligne continue</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--</span></code></p></td>
+<td><p>tirets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
+<td><p>ligne en pointillé</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-.</span></code></p></td>
+<td><p>tirets points</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Si on ne veut pas faire apparaître de ligne, il suffit d’indiquer un symbole sans préciser un style de ligne.</p>
+</div>
+<p><strong>Exemple</strong></p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne -&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;o--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne --&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;o:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne :&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="s2">&quot;o-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne -.&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pas de ligne&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne -&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;o--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne --&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;o:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne :&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="s2">&quot;o-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ligne -.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pas de ligne&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe21a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe21a.png" src="_images/courbe21a.png" />
+</div>
+</div>
+<div class="section" id="symbole-marker">
+<h3>Symbole (« marker »)<a class="headerlink" href="#symbole-marker" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les chaînes de caractères suivantes permettent de définir le symbole (« marker ») :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chaîne</p></th>
+<th class="head"><p>Effet</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>point marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">,</span></code></p></td>
+<td><p>pixel marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">o</span></code></p></td>
+<td><p>circle marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<td><p>triangle_down marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>triangle_up marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>triangle_left marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>triangle_right marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>tri_down marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>tri_up marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>tri_left marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p>tri_right marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>square marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>pentagon marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>star marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td><p>hexagon1 marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>hexagon2 marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>plus marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>x marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>diamond marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>thin_diamond marker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p>vline marker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_</span></code></p></td>
+<td><p>hline marker</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="couleur">
+<h3>Couleur<a class="headerlink" href="#couleur" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les chaînes de caractères suivantes permettent de définir la couleur :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 42%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chaîne</p></th>
+<th class="head"><p>Couleur en anglais</p></th>
+<th class="head"><p>Couleur en français</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>blue</p></td>
+<td><p>bleu</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">g</span></code></p></td>
+<td><p>green</p></td>
+<td><p>vert</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<td><p>red</p></td>
+<td><p>rouge</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>cyan</p></td>
+<td><p>cyan</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td><p>magenta</p></td>
+<td><p>magenta</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p>yellow</p></td>
+<td><p>jaune</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">k</span></code></p></td>
+<td><p>black</p></td>
+<td><p>noir</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></td>
+<td><p>white</p></td>
+<td><p>blanc</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="largeur-de-ligne">
+<h3>Largeur de ligne<a class="headerlink" href="#largeur-de-ligne" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour modifier la largeur des lignes, il est possible de changer la valeur de l’argument <code class="docutils literal notranslate"><span class="pre">linewidth</span></code>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe8a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe8a.png" src="_images/courbe8a.png" />
+</div>
+</div>
+</div>
+<div class="section" id="trace-de-formes">
+<h2>Tracé de formes<a class="headerlink" href="#trace-de-formes" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Comme la fonction <a class="reference internal" href="#plot"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">plot()</span></code></a> ne fait que relier des points, il est possible de lui fournir plusieurs points avec la même abscisse.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe15a.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe15a.png" src="_images/courbe15a.png" />
+</div>
+<div class="section" id="l-instruction-axis-equal">
+<h3>L’instruction <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code><a class="headerlink" href="#l-instruction-axis-equal" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’instruction <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code> permet d’avoir la même échelle sur l’axe des abscisses et l’axe des ordonnées afin de préserver la forme lors de l’affichage. En particulier, grâce à cette commande un carré apparaît vraiment comme un carré, de même pour un cercle.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe16a_equal.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe16a_equal.png" src="_images/courbe16a_equal.png" />
+</div>
+<p>Il est aussi possible de fixer le domaine des abscisses en utilisant <a class="reference internal" href="#xlim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code></a>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe17a_equal.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe17a_equal.png" src="_images/courbe17a_equal.png" />
+</div>
+</div>
+<div class="section" id="trace-d-un-cercle">
+<h3>Tracé d’un cercle<a class="headerlink" href="#trace-d-un-cercle" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On peut tracer utiliser une courbe paramétrique pour tracer un cercle.</p>
+<p>Sans <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code>, la courbe n’apparaît pas comme un cercle.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe18a_equal.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe18a_equal.png" src="_images/courbe18a_equal.png" />
+</div>
+<p>Avec <code class="docutils literal notranslate"><span class="pre">axis(&quot;equal&quot;)</span></code>, on obtient bien un cercle.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe19a_equal.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe19a_equal.png" src="_images/courbe19a_equal.png" />
+</div>
+<p>Il est aussi possible de modifier le domaine des abscisses avec <a class="reference internal" href="#xlim"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">xlim()</span></code></a>.</p>
+<p><em>Syntaxe « PyLab »</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>Syntaxe « standard »</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./courbes/courbe20a_equal.py">Source code</a>)</p>
+<div class="figure align-default">
+<img alt="_images/courbe20a_equal.png" src="_images/courbe20a_equal.png" />
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<ul class="simple">
+<li><p>La documentation de Matplotlib (en anglais) : <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p></li>
+<li><p>La version française du tutoriel Matplotlib de Nicolas P. Rougier avec des exemples dans le mode PyLab : <a class="reference external" href="https://python.developpez.com/tutoriels/graphique-2d/matplotlib/">https://python.developpez.com/tutoriels/graphique-2d/matplotlib/</a></p></li>
+<li><p>Le tutoriel Matplotlib de Nicolas P. Rougier (en anglais) : <a class="reference external" href="https://www.labri.fr/perso/nrougier/teaching/matplotlib/">https://www.labri.fr/perso/nrougier/teaching/matplotlib/</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Retour haut de page</a>
+      
+    </p>
+
+   <p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="CoursPython" data-lang="fr">Tweeter</a>
+<a href="https://twitter.com/CoursPython" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @CoursPython</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </p>
+    <p>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/80x15.png" align="absmiddle"/></a> 2020, David Cassagne.
+Création le 15 Oct 2012.
+        Mis à jour le 06 sept. 2020.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
