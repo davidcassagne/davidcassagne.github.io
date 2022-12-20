@@ -1,8 +1,0 @@
-User-Agent: *
-Disallow: /M1/
-Disallow: /v2/
-Disallow: /v3/
-User-agent: Googlebot
-Disallow: /*.py$
-Disallow: /*.pdf$
-
